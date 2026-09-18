@@ -1,0 +1,228 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Menue */
+.menu-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 64px;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.menu-item {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 42px;
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.menu-item.selected {
+  color: #ff0;
+}
+
+/* Zeiteingabe (ask_two_times) */
+.input-row {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  color: #ccc;
+  white-space: nowrap;
+}
+
+.input-row.active {
+  color: #ff0;
+}
+
+.input-prompt {
+  text-align: right;
+  min-width: 420px;
+}
+
+.input-value {
+  text-align: left;
+  min-width: 100px;
+}
+
+/* Bild-/Videoanzeige */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+  background: #000;
+}
+
+.slide-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+  display: block;
+}
+
+.black-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 5;
+}
+
+/* Fehlermeldung */
+.error-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+}
+
+/* Ordner-Auswahl fuer den Aphantasie Player */
+.picker-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.picker-button {
+  position: relative;
+  display: inline-block;
+  padding: 24px 40px;
+  font-size: 34px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.picker-button:hover {
+  background: #222;
+}
+
+.picker-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.picker-hint {
+  margin-top: 24px;
+  font-size: 22px;
+  color: #999;
+}
+
+/* Datei-Manager */
+.fm-path {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  font-size: 26px;
+  color: #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fm-list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.fm-item {
+  font-size: 30px;
+  padding: 8px 0;
+  color: #fff;
+}
+
+.fm-item.selected {
+  color: #ff0;
+}
+
+.fm-empty {
+  font-size: 30px;
+  color: #969696;
+}
+
+/* Fortschrittsanzeige im Video-Player */
+.progress-wrap {
+  position: absolute;
+  left: 20%;
+  width: 60%;
+  bottom: 12%;
+  height: 70px;
+  z-index: 6;
+}
+
+.progress-bg {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background: #5a5a5a;
+}
+
+.progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 1%;
+  background: #fff;
+}
+
+.progress-label {
+  position: absolute;
+  top: 50px;
+  font-size: 28px;
+  color: #fff;
+}
+
+.progress-label.left {
+  left: 0;
+}
+
+.progress-label.right {
+  right: 0;
+}
+
+.progress-label.center {
+  left: 50%;
+  transform: translateX(-50%);
+}
