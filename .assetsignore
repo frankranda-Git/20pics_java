@@ -3,3 +3,4 @@
 .DS_Store
 .assetsignore
 wrangler.jsonc
+src
