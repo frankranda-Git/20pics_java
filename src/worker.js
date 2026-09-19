@@ -16,10 +16,10 @@ async function safeEqual(a, b) {
 }
 
 function unauthorized() {
-  return new Response("Passwort erforderlich", {
+  return new Response("*", {
     status: 401,
     headers: {
-      "WWW-Authenticate": 'Basic realm="20pics", charset="UTF-8"',
+      "WWW-Authenticate": 'Basic realm="*", charset="UTF-8"',
       "Cache-Control": "no-store",
     },
   });
