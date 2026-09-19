@@ -6,6 +6,7 @@
 
 const encoder = new TextEncoder();
 const LOGIN_PATH = "/__login";
+const LOGO_PATH = "/frosch_schwarz.png"; // einzige Datei, die ohne Login abrufbar ist
 const COOKIE_NAME = "session";
 const SESSION_SECONDS = 60 * 60 * 24 * 7;
 
@@ -64,9 +65,14 @@ function loginPage(failed) {
   body {
     margin: 0; min-height: 100vh; display: flex;
     align-items: center; justify-content: center;
-    background: #111; font-family: system-ui, sans-serif;
+    background: #000; font-family: system-ui, sans-serif;
   }
-  form { display: flex; flex-direction: column; gap: 12px; width: min(320px, 86vw); }
+  main { display: flex; flex-direction: column; gap: 20px; width: min(340px, 86vw); }
+  img {
+    display: block; width: 100%; aspect-ratio: 4 / 3;
+    object-fit: cover; object-position: 50% 48.5%;
+  }
+  form { display: flex; flex-direction: column; gap: 12px; }
   input, button {
     font: inherit; padding: 12px 14px; border-radius: 8px;
     border: 1px solid ${failed ? "#c44" : "#444"};
@@ -78,11 +84,14 @@ function loginPage(failed) {
 </style>
 </head>
 <body>
-<form method="POST" action="${LOGIN_PATH}">
-  <input name="username" type="text" placeholder="Anmeldename" autocomplete="username" autocapitalize="none" autofocus required />
-  <input name="password" type="password" placeholder="Passwort" autocomplete="current-password" required />
-  <button type="submit">Anmelden</button>
-</form>
+<main>
+  <img src="${LOGO_PATH}" alt="" />
+  <form method="POST" action="${LOGIN_PATH}">
+    <input name="username" type="text" placeholder="Anmeldename" autocomplete="username" autocapitalize="none" autofocus required />
+    <input name="password" type="password" placeholder="Passwort" autocomplete="current-password" required />
+    <button type="submit">Anmelden</button>
+  </form>
+</main>
 </body>
 </html>`;
   return new Response(html, {
@@ -134,6 +143,10 @@ export default {
     const url = new URL(request.url);
     if (url.pathname === LOGIN_PATH && request.method === "POST") {
       return handleLogin(request, env);
+    }
+
+    if (url.pathname === LOGO_PATH && request.method === "GET") {
+      return env.ASSETS.fetch(request);
     }
 
     if (await hasValidSession(request, env)) {
