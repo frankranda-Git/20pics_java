@@ -4,3 +4,4 @@
 .assetsignore
 wrangler.jsonc
 src
+.wrangler
